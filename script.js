@@ -26,52 +26,24 @@ function getHumanChoice() {
     return choiceValue;
 }
 
-function getChoiceIndex(choice) {
-    let choiceIndex = 1;
-    switch (choice) {
-        case "rock":
-            choiceIndex = 1
-            break;
-        case "paper":
-            choiceIndex = 2
-            break;
-        case "scissors":
-            choiceIndex = 3
-            break;
-    }
-    return choiceIndex;
-}
-
-//We calculate indexProduct to minimize choice indices comparison permutations
 function playRound(humanChoice, computerChoice) {
-    let humanChoiceIndex = getChoiceIndex(humanChoice);
-    let computerChoiceIndex = getChoiceIndex(computerChoice);
     let choiceAnnouncement = `You chose ${humanChoice}; computer chose ${computerChoice}`;
-    let indexProduct = humanChoiceIndex * computerChoiceIndex;
-
-    if (humanChoiceIndex == computerChoiceIndex) {
+    if (humanChoice == computerChoice) {
         console.log(`${choiceAnnouncement}`);
         return null;
     }
-    else if (humanChoiceIndex < computerChoiceIndex) {
-        if (indexProduct == 3) {
-            console.log(`${choiceAnnouncement}; ${humanChoice} beats ${computerChoice};`);
-            return 1;
-        }
-        else {
-            console.log(`${choiceAnnouncement}; ${computerChoice} beats ${humanChoice};`)
-            return 0;
-        }
+    if (
+        (humanChoice == 'rock' && computerChoice == 'scissors') ||
+        (humanChoice == 'paper' && computerChoice == 'rock') ||
+        (humanChoice == 'scissors' && computerChoice == 'paper')
+    ) {
+        console.log(`${choiceAnnouncement}; ${humanChoice} beats ${computerChoice}` );
+        return 1;
     }
+
     else {
-        if (indexProduct == 3) {
-            console.log(`${choiceAnnouncement}; ${computerChoice} beats ${humanChoice};`);
-            return 0;
-        }
-        else {
-            console.log(`${choiceAnnouncement}; ${humanChoice} beats ${computerChoice};`);
-            return 1;
-        }
+        console.log(`${choiceAnnouncement}; ${computerChoice} beats ${humanChoice}`);
+        return 0;
     }
 }
 
