@@ -3,4 +3,4 @@
 * purpose: play rock, paper, scissors
 * complexity: beginner
 * mode of play: console window
-* source: the odin project (foundaitons)
+* source: the odin project (foundations)
